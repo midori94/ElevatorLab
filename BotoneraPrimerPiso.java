@@ -9,6 +9,10 @@ public class BotoneraPrimerPiso extends Botonera implements UpRequest {
          up.turnON();
       return result;         
    }
+   
+   public void resetUpRequest(){
+	   up.turnOFF();
+   }
 
    public boolean isUpRequested() {
       return up.getState();
