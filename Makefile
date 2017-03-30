@@ -5,10 +5,10 @@ JVM= java  # Added by Agustín González
 .java.class:
 	$(JC) $(JFLAGS) $*.java
 
-CLASSES = Punto.java Linea.java LineaTest.java
+CLASSES = Boton.java Botonera.java BotoneraCabina.java BotoneraPisoIntermedio.java BotoneraPrimerPiso.java DownRequest.java UpRequest.java ElevatorLab.java
 
 # main variable: Added by Agustín González
-MAIN = LineaTest
+MAIN = ElevatorLab
 
 default: classes
 
@@ -16,7 +16,7 @@ classes: $(CLASSES:.java=.class)
 
 # run tarjet added by Agustín González
 run: 
-	$(JVM) $(MAIN)
+	$(JVM) $(MAIN) "inputEvents.txt"
 
 clean:
 	$(RM) *.class
