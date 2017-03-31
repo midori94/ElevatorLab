@@ -1,6 +1,8 @@
 public class BotoneraPisoIntermedio extends Botonera implements DownRequest, UpRequest {
    private Boton up, down;
    public BotoneraPisoIntermedio () {
+      up = new Boton();
+      down = new Boton();
    }
    
    public boolean setRequest(String up_down){

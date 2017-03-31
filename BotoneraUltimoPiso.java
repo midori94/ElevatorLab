@@ -1,6 +1,8 @@
 public class BotoneraUltimoPiso extends Botonera implements DownRequest{
 	private Boton down;
-	public BotoneraUltimoPiso(){}
+	public BotoneraUltimoPiso(){
+		down = new Boton();
+        }
 	public boolean setRequest(String s_up) {
 		boolean result = s_up.equals("D");
 	    if (result)
