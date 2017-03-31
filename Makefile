@@ -5,7 +5,7 @@ JVM= java  # Added by Agustín González
 .java.class:
 	$(JC) $(JFLAGS) $*.java
 
-CLASSES = Boton.java Botonera.java BotoneraCabina.java BotoneraPisoIntermedio.java BotoneraPrimerPiso.java DownRequest.java UpRequest.java ElevatorLab.java
+CLASSES = /src/Boton.java /src/Botonera.java /src/BotoneraCabina.java /src/BotoneraPisoIntermedio.java /src/BotoneraPrimerPiso.java /src/DownRequest.java /src/UpRequest.java /src/ElevatorLab.java
 
 # main variable: Added by Agustín González
 MAIN = ElevatorLab
