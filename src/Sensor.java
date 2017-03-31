@@ -23,15 +23,22 @@ public class Sensor {
    /** return true if h is within position +- PRECISION 
    */
       // to be completed
+      float h2 = h-position;
+      if (h2 > -PRECISION && h2 < PRECISION)
+         return true;
+      return false; 
    }
    public void activateAction() {
       active = true;
       controlUnit.activateSensorAction(storyNum); 
    }
    public void deactivateAction() {
+       active = false;
+       controlUnit.deactivateSensorAction(storyNum);
       // to be completed
    }
    public boolean isActivated(){
-       // to be completed
+       return active;
+       // to be complete
    }
 }

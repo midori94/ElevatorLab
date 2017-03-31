@@ -1,17 +1,17 @@
 /**
-La causalidad de eventos es La cabina se mueve,
+La causalidad de eventos es: La cabina se mueve,
 ésta presiona un sensor, y luego el sensor debe
 reportar este evento a la unidad de control responsable de
 informar de la llegada a un nuevo piso y tomar otras acciones
-como detener la cabina si así ha sido requeirdo para ese piso 
+como detener la cabina si así ha sido requerido para ese piso
 (esta última parte no está implementada aquí).
 En la operación de un ascensor, la Unidad de Control no requiere
-pedir servicios a un sensor, pues es éste quien informa 
+pedir servicios a un sensor, pues es éste quien informa
 a la unidad de control de un cambio (la señal del sensor es una
 entrada y no una salida de la Unidad de Control). En esta etapa
 se ha puesto una referencia a los sensores para imprimir el
 estado de éstos cada ves que uno de ellos cambia.
-La Unidad de Control tiene una referencia a al cabina para informar 
+La Unidad de Control tiene una referencia a al cabina para informar
 a las personas en su interior del número de piso en que van.
 */
 import java.util.ArrayList;
