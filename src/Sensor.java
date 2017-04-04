@@ -41,4 +41,6 @@ public class Sensor {
        return active;
        // to be complete
    }
+    public int floor() return storyNum;
+    
 }

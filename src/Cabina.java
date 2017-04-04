@@ -31,6 +31,14 @@ public class Cabina {
       Sensor sensor;
       position+=delta;
       sensor=shaft.findSensor(position);
+      if (sensor != lastsensor) {
+	  if (sensor != null) {
+	      sensor.activateAction();
+	      floorIndicator = sensor.floor();
+	  }
+	  else sensor.deactivateAction();
+	  lastsensor = sensor; 
+      }  
       // to be completed by you.
    }
    // other methods are missing.
