@@ -1,6 +1,6 @@
 JFLAGS = -g -classpath src/
 JC = javac
-JVM= java -cp src/ # Added by Agustín González
+JVM= java -cp src/# Added by Agustín González
 .SUFFIXES: .java .class
 .java.class:
 	$(JC) $(JFLAGS) $*.java
@@ -14,7 +14,7 @@ CLASSES = \
 	src/stage2Test.java
 
 # main variable: Added by Agustín González
-MAIN = ElevatorLab
+MAIN = stage2Test
 
 default: classes
 
@@ -22,7 +22,7 @@ classes: $(CLASSES:.java=.class)
 
 # run tarjet added by Agustín González
 run: 
-	$(JVM) $(MAIN) "inputEvents.txt"
+	$(JVM) $(MAIN)
 
 clean:
 	$(RM) src/*.class

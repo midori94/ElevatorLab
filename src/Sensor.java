@@ -12,7 +12,7 @@ public class Sensor {
    private final int storyNum; // story is the space between two adjacent floor levels
    private boolean active;
    private ControlUnit controlUnit;
-   private static float PRECISION = 0.05f; // [m] f because it's float, default is double  
+   private static float PRECISION = 0.05f; // [m] f because it's float, default is double
    public Sensor (float pos, int piso, ControlUnit cu) {
       position = pos;
       storyNum = piso;
@@ -20,27 +20,22 @@ public class Sensor {
       controlUnit = cu;
    }
    public boolean isInRange(float h){
-   /** return true if h is within position +- PRECISION 
+   /** return true if h is within position +- PRECISION
    */
-      // to be completed
       float h2 = h-position;
       if (h2 > -PRECISION && h2 < PRECISION)
          return true;
-      return false; 
+      return false;
    }
    public void activateAction() {
       active = true;
-      controlUnit.activateSensorAction(storyNum); 
+      controlUnit.activateSensorAction(storyNum);
    }
    public void deactivateAction() {
        active = false;
        controlUnit.deactivateSensorAction(storyNum);
-      // to be completed
    }
    public boolean isActivated(){
        return active;
-       // to be complete
    }
-    public int floor() return storyNum;
-    
 }

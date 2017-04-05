@@ -1,10 +1,10 @@
 /**
 Cabina: La Cabina es el carro del ascensor que sube y baja con personas.
 La cabina tiene una botonera (que no se ocupará en esta etapa), una referencia
-a la "caja ascensor" donde se encuentra, su posición actual, un indicador 
-del piso en que se encuentra (requerido para mostrar piso actual) y una 
+a la "caja ascensor" donde se encuentra, su posición actual, un indicador
+del piso en que se encuentra (requerido para mostrar piso actual) y una
 referencia al último sensor que activó y que al ddejarlo debe desactivarlo.
-La causa única de su movimiento es la invocación al método move. Ante un 
+La causa única de su movimiento es la invocación al método move. Ante un
 movimiento la cabina pregunta a la caja del ascensor por sensores en su nueva
 posición.  De haber sensor, lo activa. Si no hay sensor se preocupa de desactivar
 el último activado.
@@ -14,12 +14,12 @@ import javax.swing.Timer;
 import java.awt.event.*;  //for ActionListener, ActionEvent
 
 public class Cabina {
-   private BotoneraCabina botonera; 
+   private BotoneraCabina botonera;
    private CajaAscensor shaft;
    private float position;  // in meters
    private int floorIndicator;
    private Sensor lastSensor=null;
-   
+
    public Cabina (BotoneraCabina bc, CajaAscensor cajaAscensor) {
       Random generator = new Random();
       botonera = bc;
@@ -29,17 +29,20 @@ public class Cabina {
    }
    public void move(float delta) {
       Sensor sensor;
-      position+=delta;
-      sensor=shaft.findSensor(position);
-      if (sensor != lastsensor) {
-	  if (sensor != null) {
+      position += delta;
+      sensor = shaft.findSensor(position);
+      if (sensor != lastSensor) {
+	  if (sensor != null)
 	      sensor.activateAction();
-	      floorIndicator = sensor.floor();
-	  }
-	  else sensor.deactivateAction();
-	  lastsensor = sensor; 
-      }  
-      // to be completed by you.
+          if (lastSensor != null)
+              lastSensor.deactivateAction();
+	  lastSensor = sensor;
+      }
    }
-   // other methods are missing.
+   public int readFloorIndicator(){
+      return floorIndicator;
+   }
+   public void setFloorIndicator(int currentFloor){
+      floorIndicator = currentFloor;
+   }
  }

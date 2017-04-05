@@ -31,7 +31,7 @@ public class ControlUnit {
          System.out.print(sensores.get(i).isActivated()?"1":"0");
       System.out.println();
    }
-   public void deactivateSensorAction(int currentFloor){ 
+   public void deactivateSensorAction(int currentFloor){
       // to be completed
    }
 }
