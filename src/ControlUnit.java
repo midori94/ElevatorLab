@@ -33,5 +33,9 @@ public class ControlUnit {
    }
    public void deactivateSensorAction(int currentFloor){
       // to be completed
+	  System.out.print(cabina.readFloorIndicator()+"\t");
+	     for (int i=0; i<sensores.size(); i++)
+	        System.out.print(sensores.get(i).isActivated()?"1":"0");
+	  System.out.println();
    }
 }

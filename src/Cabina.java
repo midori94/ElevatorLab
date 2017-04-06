@@ -32,11 +32,11 @@ public class Cabina {
       position += delta;
       sensor = shaft.findSensor(position);
       if (sensor != lastSensor) {
-	  if (sensor != null)
-	      sensor.activateAction();
-          if (lastSensor != null)
-              lastSensor.deactivateAction();
-	  lastSensor = sensor;
+         if (sensor != null)
+	        sensor.activateAction();
+         if (lastSensor != null)
+            lastSensor.deactivateAction();
+	     lastSensor = sensor;
       }
    }
    public int readFloorIndicator(){
