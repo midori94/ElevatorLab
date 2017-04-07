@@ -64,7 +64,14 @@ public class ControlUnit {
    }
    
    private void checkAndAttendDownRequest(int floor) {
-      // to be completed
+      if (botoneras[floor] instanceof DownRequest){
+         DownRequest boton = (DownRequest) botoneras[floor];
+         if (boton.isDownRequested()) {
+	    boton.resetDownRequest();
+	    printElevatorState();
+            motor.pause();
+         }
+      }
    }
    public void activateSensorAction(int currentFloor){
       cabina.setFloorIndicator(currentFloor);
@@ -87,6 +94,18 @@ public class ControlUnit {
    }
    
    private boolean areThereLowerRequests(int currentFloor) {
-      // to be completed
+      for (int i=1; i < currentFloor; i++) {
+         if(botoneras[i] instanceof UpRequest){
+            UpRequest boton = (UpRequest) botoneras[i];
+            if (boton.isDownRequested())
+	       return true;
+         }
+         if(botoneras[i] instanceof DownRequest){
+	    DownRequest boton = (DownRequest) botoneras[i];
+	    if (boton.isUpRequested())
+	       return true;
+         }
+      }
+      return false;
    }
 }
