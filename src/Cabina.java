@@ -12,31 +12,42 @@ posición.  De haber sensor, lo activa. Si no hay sensor se preocupa de desactiv
 el último activado.
 */
 import java.util.Random;
+import javax.swing.Timer;
+import java.awt.event.*;  //for ActionListener, ActionEvent
 
 public class Cabina {
-   private BotoneraCabina botonera; 
+   private BotoneraCabina botonera;
    private CajaAscensor shaft;
    private float position;  // in meters
    private int floorIndicator;
    private Sensor lastSensor=null;
-   
-   public Cabina (BotoneraCabina bc, CajaAscensor caja) {
+
+   public Cabina (BotoneraCabina bc, CajaAscensor cajaAscensor) {
       Random generator = new Random();
       botonera = bc;
-      shaft = caja;
+      shaft = cajaAscensor;
       position = generator.nextFloat();   //it starts between 0 an 1 [m]
-      floorIndicator=1;
+      floorIndicator=1;  // to make it consistent with its position
    }
    public void move(float delta) {
-      // to be completed
+      Sensor sensor;
+      position += delta;
+      sensor = shaft.findSensor(position);
+      if (sensor != lastSensor) {
+         if (sensor != null)
+	        sensor.activateAction();
+         if (lastSensor != null)
+            lastSensor.deactivateAction();
+	     lastSensor = sensor;
+      }
    }
    public float getPosition(){
       return position;
    }
-   public void setFloorIndicator (int floor){
-      floorIndicator = floor;
-   }
-   public int readFloorIndicator() {
+   public int readFloorIndicator(){
       return floorIndicator;
    }
-}
+   public void setFloorIndicator(int currentFloor){
+      floorIndicator = currentFloor;
+   }
+ }

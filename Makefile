@@ -1,6 +1,6 @@
 JFLAGS = -g -classpath src/
 JC = javac
-JVM= java -cp src/ # Added by AgustÌn Gonz·lez
+JVM= java -cp src/# Added by Agust√≠n Gonz√°lez
 .SUFFIXES: .java .class
 .java.class:
 	$(JC) $(JFLAGS) $*.java
@@ -8,6 +8,8 @@ JVM= java -cp src/ # Added by AgustÌn Gonz·lez
 CLASSES = \
 	src/Botonera.java \
 	src/BotoneraCabina.java \
+	src/CajaAscensor.java \
+	src/Sensor.java \
 	src/Cabina.java \
 	src/ControlUnit.java \
 	src/motor.java \
@@ -20,9 +22,9 @@ default: classes
 
 classes: $(CLASSES:.java=.class)
 
-# run tarjet added by AgustÌn Gonz·lez
+# run tarjet added by Agust√≠n Gonz√°lez
 run: 
-	$(JVM) $(MAIN) "inputEvents.txt"
+	$(JVM) $(MAIN)
 
 clean:
 	$(RM) src/*.class
