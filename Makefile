@@ -8,7 +8,7 @@ JVM= java -cp src
 
 MAIN = stage3Test
 all: 
-	mkdir bin/
+	mkdir -p bin/
 	$(JC) $(JFLAGS)$(SRC)
 
 

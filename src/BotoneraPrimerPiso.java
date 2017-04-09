@@ -1,6 +1,6 @@
 public class BotoneraPrimerPiso extends Botonera implements UpRequest {
    private Boton up;
-   public BotoneraPrimerPiso(){
+   public BotoneraPrimerPiso(ControlUnit cu, int floor){
       up = new Boton();
    }
    public boolean setRequest(String s_up) {
