@@ -1,30 +1,21 @@
-JFLAGS = -g -classpath src/
+SRC=*.java
+JFLAGS = -g -classpath src/*.java
 JC = javac
-JVM= java -cp src/# Added by Agustín González
-.SUFFIXES: .java .class
-.java.class:
-	$(JC) $(JFLAGS) $*.java
+JVM= java -cp src
+#.SUFFIXES: .java .class
+#.java.class:
+#	$(JC) $(JFLAGS) $*.java
 
-CLASSES = \
-	src/Botonera.java \
-	src/BotoneraCabina.java \
-	src/CajaAscensor.java \
-	src/Sensor.java \
-	src/Cabina.java \
-	src/ControlUnit.java \
-	src/motor.java \
-	src/stage3Test.java
-
-# main variable: Added by Agust�n Gonz�lez
 MAIN = stage3Test
+all: 
+	$(JC) $(JFLAGS) #$(SRC)
+	mkdir -p bin/
+	mv *.class bin/
 
-default: classes
 
-classes: $(CLASSES:.java=.class)
-
-# run tarjet added by Agustín González
-run: 
+run:
 	$(JVM) $(MAIN)
 
+
 clean:
-	$(RM) src/*.class
+	rm -rf bin/
