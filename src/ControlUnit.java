@@ -97,12 +97,12 @@ public class ControlUnit {
       for (int i=1; i < currentFloor; i++) {
          if(botoneras[i] instanceof UpRequest){
             UpRequest boton = (UpRequest) botoneras[i];
-            if (boton.isDownRequested())
+            if (boton.isUpRequested())
 	       return true;
          }
          if(botoneras[i] instanceof DownRequest){
 	    DownRequest boton = (DownRequest) botoneras[i];
-	    if (boton.isUpRequested())
+	    if (boton.isDownRequested())
 	       return true;
          }
       }
