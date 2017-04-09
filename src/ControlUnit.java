@@ -30,6 +30,14 @@ public class ControlUnit {
       if (motor.getState() == Motor.STOPPED) { // start de motor
             // to go to the requested floor
          int cabinaLocation = cabina.readFloorIndicator();
+         if (locationRequest != cabinaLocation){
+            if (locationRequest > cabinaLocation) motor.lift();
+            else motor.lower();
+         }
+         else {
+            ((UpRequest)botoneras[locationRequest]).resetUpRequest();
+            ((DownRequest)botoneras[locationRequest]).resetDownRequest();
+         }
          // to be completed
       }
    }
@@ -67,14 +75,26 @@ public class ControlUnit {
       if (botoneras[floor] instanceof DownRequest){
          DownRequest boton = (DownRequest) botoneras[floor];
          if (boton.isDownRequested()) {
-	    boton.resetDownRequest();
-	    printElevatorState();
-            motor.pause();
+	        boton.resetDownRequest();
+	        printElevatorState();
+           motor.pause();
          }
       }
    }
    public void activateSensorAction(int currentFloor){
+      int mState = motor.getState();
       cabina.setFloorIndicator(currentFloor);
+      if(mState == 0){
+         if(areThereHigherRequests(currentFloor)){
+            if(((UpRequest)botoneras[currentFloor]).isUpRequested())
+               motor.pause();
+         }else motor.stop();
+      }else if(mState == 1){
+         if(areThereLowerRequests(currentFloor)){
+            if(((DownRequest)botoneras[currentFloor]).isDownRequested())
+               motor.pause();
+         }else motor.stop();
+      }
       // to be completed     
    }
    private boolean areThereHigherRequests(int currentFloor) {
