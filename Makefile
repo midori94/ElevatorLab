@@ -1,14 +1,14 @@
 SRC=*.java
-JFLAGS = -g -classpath src/
+JFLAGS = -g -classpath src/*.java
 JC = javac
 JVM= java -cp src
-.SUFFIXES: .java .class
-.java.class:
-	$(JC) $(JFLAGS) $*.java
+#.SUFFIXES: .java .class
+#.java.class:
+#	$(JC) $(JFLAGS) $*.java
 
 MAIN = stage3Test
 all: 
-	$(JC) -encoding ISO8859_1 $(SRC)
+	$(JC) $(JFLAGS) #$(SRC)
 	mkdir -p bin/
 	mv *.class bin/
 
