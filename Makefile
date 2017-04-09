@@ -1,5 +1,5 @@
 SRC=*.java
-JFLAGS = -g -classpath src/*.java
+JFLAGS = -g -d bin src/
 JC = javac
 JVM= java -cp src
 #.SUFFIXES: .java .class
@@ -8,9 +8,8 @@ JVM= java -cp src
 
 MAIN = stage3Test
 all: 
-	$(JC) $(JFLAGS) #$(SRC)
-	mkdir -p bin/
-	mv *.class bin/
+	mkdir bin/
+	$(JC) $(JFLAGS)$(SRC)
 
 
 run:
