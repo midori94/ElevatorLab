@@ -33,7 +33,7 @@ public class Sensor {
    }
    public void deactivateAction() {
        active = false;
-       //controlUnit.deactivateSensorAction(storyNum);
+       controlUnit.deactivateSensorAction(storyNum);
    }
    public boolean isActivated(){
        return active;
