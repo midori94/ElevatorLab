@@ -1,7 +1,7 @@
 SRC=*.java
 JFLAGS = -g -d bin src/
 JC = javac
-JVM= java -cp src
+JVM= java -cp bin/
 #.SUFFIXES: .java .class
 #.java.class:
 #	$(JC) $(JFLAGS) $*.java
@@ -13,7 +13,7 @@ all:
 
 
 run:
-	$(JVM) $(MAIN)
+	$(JVM) $(MAIN) "inputEvents.txt"
 
 
 clean:
