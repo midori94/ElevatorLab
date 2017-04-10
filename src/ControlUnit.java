@@ -27,7 +27,9 @@ public class ControlUnit {
       botoneras = b;
    }
    public void elevatorRequested(int locationRequest){
-      if (motor.getState() == Motor.STOPPED) { // start de motor
+	  System.out.print("Button activated  ");
+	  printElevatorState();
+      if (motor.getState() == Motor.STOPPED) { // start de motor // SI NO ESTA PARADO QUE PASA?
             // to go to the requested floor
          int cabinaLocation = cabina.readFloorIndicator();
          if (locationRequest != cabinaLocation){
@@ -35,8 +37,8 @@ public class ControlUnit {
             else motor.lower();
          }
          else {
-            ((UpRequest)botoneras[locationRequest]).resetUpRequest();
-            ((DownRequest)botoneras[locationRequest]).resetDownRequest();
+        	 checkAndAttendUpRequest(cabinaLocation);
+        	 checkAndAttendDownRequest(cabinaLocation);
          }
          // to be completed
       }
@@ -65,6 +67,7 @@ public class ControlUnit {
          UpRequest boton = (UpRequest) botoneras[floor];
          if (boton.isUpRequested()) {
             boton.resetUpRequest();
+            System.out.print("Light Deactivated ");
             printElevatorState();
             motor.pause();
          }            
@@ -76,26 +79,54 @@ public class ControlUnit {
          DownRequest boton = (DownRequest) botoneras[floor];
          if (boton.isDownRequested()) {
 	        boton.resetDownRequest();
+	        System.out.print("Light Deactivated ");
 	        printElevatorState();
-           motor.pause();
+            motor.pause();
          }
       }
    }
    public void activateSensorAction(int currentFloor){
+	  
       int mState = motor.getState();
       cabina.setFloorIndicator(currentFloor);
-      if(mState == 0){
-         if(areThereHigherRequests(currentFloor)){
-	    checkAndAttendUpRequest(currentFloor);
-            /*if(((UpRequest)botoneras[currentFloor]).isUpRequested())
-               motor.pause();*/
-         }else motor.stop();
-      }else if(mState == 1){
-         if(areThereLowerRequests(currentFloor)){
-            checkAndAttendDownRequest(currentFloor);
-            /*if(((DownRequest)botoneras[currentFloor]).isDownRequested())
-               motor.pause();*/
-         }else motor.stop();
+      System.out.print("Sensor activated  ");
+      printElevatorState();
+      
+      //if(mState == Motor.UP){
+      if(botoneras[currentFloor] instanceof UpRequest){
+         UpRequest boton = (UpRequest) botoneras[currentFloor];
+         if(boton.isUpRequested()){
+    	    checkAndAttendUpRequest(currentFloor);
+            if(areThereHigherRequests(currentFloor)){
+        	    motor.lift();
+            }
+            else if (areThereLowerRequests(currentFloor)){
+        	    checkAndAttendDownRequest(currentFloor);
+        	    motor.lower();
+        	    //checkAndAttendDownRequest(currentFloor);
+            }
+            else{
+        	    motor.stop();
+            }
+         }
+      }
+      //else if(mState == Motor.DOWN){
+      if(botoneras[currentFloor] instanceof DownRequest){
+    	 DownRequest boton = (DownRequest) botoneras[currentFloor];
+         if(boton.isDownRequested()){
+    	    checkAndAttendDownRequest(currentFloor);
+            if(areThereLowerRequests(currentFloor)){
+        	    motor.lower();
+            }
+            else if (areThereHigherRequests(currentFloor)){
+        	    checkAndAttendUpRequest(currentFloor);
+         	    motor.lift();
+        	    //checkAndAttendUpRequest(currentFloor);
+            }
+            else {
+        	    motor.stop();
+            }
+         }
       }
       // to be completed     
    }
