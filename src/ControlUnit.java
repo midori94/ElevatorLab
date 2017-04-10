@@ -86,13 +86,15 @@ public class ControlUnit {
       cabina.setFloorIndicator(currentFloor);
       if(mState == 0){
          if(areThereHigherRequests(currentFloor)){
-            if(((UpRequest)botoneras[currentFloor]).isUpRequested())
-               motor.pause();
+	    checkAndAttendUpRequest(currentFloor);
+            /*if(((UpRequest)botoneras[currentFloor]).isUpRequested())
+               motor.pause();*/
          }else motor.stop();
       }else if(mState == 1){
          if(areThereLowerRequests(currentFloor)){
-            if(((DownRequest)botoneras[currentFloor]).isDownRequested())
-               motor.pause();
+            checkAndAttendDownRequest(currentFloor);
+            /*if(((DownRequest)botoneras[currentFloor]).isDownRequested())
+               motor.pause();*/
          }else motor.stop();
       }
       // to be completed     
