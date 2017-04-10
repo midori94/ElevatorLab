@@ -6,8 +6,10 @@ public class BotoneraPrimerPiso extends Botonera implements UpRequest {
    }
    public boolean setRequest(String s_up) {
       boolean result = s_up.equals("U");
-      if (result)
+      if (result){
          up.turnON();
+         elevatorRequested();
+      }
       return result;
    }
    public void resetUpRequest(){

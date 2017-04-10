@@ -6,7 +6,7 @@ public abstract class Botonera {
       this.location = location; // 0 means in cabina
    }
    protected void elevatorRequested(){
-      // to be completed
+      controlUnit.elevatorRequested(location);
    }
    public abstract boolean setRequest(String s);  // users can only set buttons 
 }

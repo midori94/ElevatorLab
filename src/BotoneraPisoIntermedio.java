@@ -13,6 +13,7 @@ public class BotoneraPisoIntermedio extends Botonera implements DownRequest, UpR
          down.turnON();
       else
          return false;
+      super.elevatorRequested();
       return true;
    }
    // UpRequest interface implementation
