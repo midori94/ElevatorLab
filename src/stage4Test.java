@@ -2,7 +2,7 @@ import java.util.Scanner;
 import java.io.File;
 import java.io.FileNotFoundException;
 
-public class stage3Test {
+public class stage4Test {
    public static int currentTime=0;
    public static void main(String[] args) {
         // Elevator's parameters
@@ -16,16 +16,17 @@ public class stage3Test {
       Sensor[] sensores = new Sensor[numPisos];  // Since the number of sensors does not
                 // change, it is more efficient to use an array. Sorry for that change!
       CajaAscensor shaft = new CajaAscensor(sensores);
-      BotoneraCabina bc = new BotoneraCabina(numPisos);  // we do not use it in this stage
-      Cabina cabina = new Cabina(bc, shaft);
+      Cabina cabina = new Cabina(shaft);
       Motor motor = new Motor(cabina, cabinaSpeed);
       ControlUnit controlUnit = new ControlUnit(motor, cabina, sensores, botoneras);      
-
+      
+      botoneras[0] = new BotoneraCabina(numPisos,controlUnit);  // we do not use it in this stage
       botoneras[1] = new BotoneraPrimerPiso(controlUnit,1);
       for (int i=2; i< numPisos; i++)
          botoneras[i] = new BotoneraPisoIntermedio(controlUnit, i);
       botoneras[numPisos] = new BotoneraUltimoPiso(controlUnit, numPisos);
-
+      cabina.setBotonera((BotoneraCabina)botoneras[0]);
+      
       for (int i=0; i < sensores.length; i++)
          sensores[i] = new Sensor(i*floorHight,i+1, controlUnit);
       

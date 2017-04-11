@@ -22,9 +22,8 @@ public class Cabina {
    private int floorIndicator;
    private Sensor lastSensor=null;
 
-   public Cabina (BotoneraCabina bc, CajaAscensor cajaAscensor) {
+   public Cabina (CajaAscensor cajaAscensor) {
       Random generator = new Random();
-      botonera = bc;
       shaft = cajaAscensor;
       position = generator.nextFloat();   //it starts between 0 an 1 [m]
       floorIndicator=1;  // to make it consistent with its position
@@ -40,6 +39,9 @@ public class Cabina {
             lastSensor.deactivateAction();
 	     lastSensor = sensor;
       }
+   }
+   public void setBotonera(BotoneraCabina bc){
+      botonera = bc;
    }
    public float getPosition(){
       return position;
