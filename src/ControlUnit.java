@@ -1,41 +1,146 @@
 /**
-La causalidad de eventos es: La cabina se mueve,
-ésta presiona un sensor, y luego el sensor debe
-reportar este evento a la unidad de control responsable de
-informar de la llegada a un nuevo piso y tomar otras acciones
-como detener la cabina si así ha sido requerido para ese piso
-(esta última parte no está implementada aquí).
+La causalidad de eventos es la siguiente: el motor hace mover la cabina,
+ésta presiona un sensor, y luego el sensor
+reporta este evento a la unidad de control. La unidad de control es
+responsable de informar la llegada a un nuevo piso y chequear y atender
+posibles solicitudes de ese piso.
 En la operación de un ascensor, la Unidad de Control no requiere
-pedir servicios a un sensor, pues es éste quien informa
+pedir servicios a un sensor, pues es éste quien informa 
 a la unidad de control de un cambio (la señal del sensor es una
-entrada y no una salida de la Unidad de Control). En esta etapa
-se ha puesto una referencia a los sensores para imprimir el
-estado de éstos cada ves que uno de ellos cambia.
-La Unidad de Control tiene una referencia a al cabina para informar
+entrada de la Unidad de Control y no una salida). Se ha puesto
+una referencia a sensores en la unidad de control
+para imprimir el estado de éstos.
+La Unidad de Control tiene una referencia a la cabina para informar 
 a las personas en su interior del número de piso en que van.
 */
-import java.util.ArrayList;
 
 public class ControlUnit {
+   private Motor motor;
    private Cabina cabina;
-   private ArrayList<Sensor> sensores;
-   public ControlUnit(Cabina ca, ArrayList<Sensor> s){
+   private Sensor[] sensores;
+   private Botonera[] botoneras;
+      
+   public ControlUnit(Motor m,Cabina ca, Sensor[] s, Botonera[] b){
+      motor = m;
       cabina = ca;
       sensores = s;
+      botoneras = b;
+   }
+   public void elevatorRequested(int locationRequest){
+	  System.out.print("Button activated  ");
+	  printElevatorState();
+      if (motor.getState() == Motor.STOPPED) { // start de motor // SI NO ESTA PARADO QUE PASA?
+            // to go to the requested floor
+         int cabinaLocation = cabina.readFloorIndicator();
+         if (locationRequest != cabinaLocation){
+            if (locationRequest > cabinaLocation) motor.lift();
+            else motor.lower();
+         }
+         else {
+        	 checkAndAttendUpRequest(cabinaLocation);
+        	 checkAndAttendDownRequest(cabinaLocation);
+         }
+         // to be completed
+      }
+   }
+   private void printElevatorState(){
+      System.out.print(cabina.readFloorIndicator()+"\t"+motor.getState()+"\t");
+      for (Sensor s: sensores)
+         System.out.print(s.isActivated()?"1":"0");
+      System.out.print("\t");
+      for (int i=1; i < botoneras.length; i++) 
+         if (botoneras[i] instanceof UpRequest) {
+            UpRequest boton = (UpRequest) botoneras[i];
+            System.out.print(boton.isUpRequested()?"1":"0");
+         }   
+      System.out.print("-\t-");
+      for (int i=1; i < botoneras.length; i++) 
+         if (botoneras[i] instanceof DownRequest) {
+            DownRequest boton = (DownRequest) botoneras[i];
+            System.out.print(boton.isDownRequested()?"1":"0");
+         }   
+      System.out.println();   
+   }
+   
+   private void checkAndAttendUpRequest(int floor) {
+      if (botoneras[floor] instanceof UpRequest){
+         UpRequest boton = (UpRequest) botoneras[floor];
+         if (boton.isUpRequested()) {
+            boton.resetUpRequest();
+            System.out.print("Light Deactivated ");
+            printElevatorState();
+            motor.pause();
+         }            
+      }
+   }
+   
+   private void checkAndAttendDownRequest(int floor) {
+      if (botoneras[floor] instanceof DownRequest){
+         DownRequest boton = (DownRequest) botoneras[floor];
+         if (boton.isDownRequested()) {
+	        boton.resetDownRequest();
+	        System.out.print("Light Deactivated ");
+	        printElevatorState();
+            motor.pause();
+         }
+      }
    }
    public void activateSensorAction(int currentFloor){
+	  
+      int mState = motor.getState();
       cabina.setFloorIndicator(currentFloor);
-      // imprimir estado de Cabina y sensores
-      System.out.print(cabina.readFloorIndicator()+"\t");
-      for (int i=0; i<sensores.size(); i++)
-         System.out.print(sensores.get(i).isActivated()?"1":"0");
-      System.out.println();
+      System.out.print("Sensor activated  ");
+      printElevatorState();
+      
+      if (mState == motor.UP){
+	 checkAndAttendUpRequest(currentFloor);
+	 if (!areThereHigherRequests(currentFloor)){
+            checkAndAttendDownRequest(currentFloor);
+            if (areThereLowerRequests(currentFloor))
+               motor.lower();
+            else motor.stop();
+	 }
+      }
+      else if (mState == motor.DOWN){
+         checkAndAttendDownRequest(currentFloor);
+         if (!areThereLowerRequests(currentFloor)){
+            checkAndAttendUpRequest(currentFloor);
+            if (areThereLowerRequests(currentFloor))
+               motor.lift();
+            else motor.stop();
+         }
+      }
+      // to be completed     
    }
-   public void deactivateSensorAction(int currentFloor){
-      // to be completed
-	  System.out.print(cabina.readFloorIndicator()+"\t");
-	     for (int i=0; i<sensores.size(); i++)
-	        System.out.print(sensores.get(i).isActivated()?"1":"0");
-	  System.out.println();
+   private boolean areThereHigherRequests(int currentFloor) {
+      for (int i=currentFloor+1; i < botoneras.length; i++) {
+         if(botoneras[i] instanceof UpRequest){
+            UpRequest boton = (UpRequest) botoneras[i];
+            if (boton.isUpRequested()) 
+               return true;
+         }
+         if(botoneras[i] instanceof DownRequest){
+            DownRequest boton = (DownRequest) botoneras[i];
+            if (boton.isDownRequested()) 
+               return true;
+         }
+      }
+      return false;
+   }
+   
+   private boolean areThereLowerRequests(int currentFloor) {
+      for (int i=1; i < currentFloor; i++) {
+         if(botoneras[i] instanceof UpRequest){
+            UpRequest boton = (UpRequest) botoneras[i];
+            if (boton.isUpRequested())
+	       return true;
+         }
+         if(botoneras[i] instanceof DownRequest){
+	    DownRequest boton = (DownRequest) botoneras[i];
+	    if (boton.isDownRequested())
+	       return true;
+         }
+      }
+      return false;
    }
 }

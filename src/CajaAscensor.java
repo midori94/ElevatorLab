@@ -15,14 +15,13 @@ RielGuiaCabina, o algo así.
 import java.util.ArrayList;
 
 public class CajaAscensor {
-   private ArrayList <Sensor> sensores;
-   public CajaAscensor (ArrayList<Sensor> ss) {
+   private Sensor[] sensores;
+   public CajaAscensor (Sensor[] ss) {
       sensores = ss;
    }
    public Sensor findSensor(float position) {
-       int i = 0;
-       for (Sensor s : sensores)
-	   if (s.isInRange(position)) return s;
+       for (int i=0; i < sensores.length; i++)
+	         if (sensores[i].isInRange(position)) return sensores[i];
        return null;
    }
 }

@@ -23,8 +23,9 @@ public class Sensor {
    /** return true if h is within position +- PRECISION
    */
       float h2 = h-position;
-      if (h2 > -PRECISION && h2 < PRECISION)
+      if (h2 > -PRECISION && h2 < PRECISION){
          return true;
+      }
       return false;
    }
    public void activateAction() {
@@ -33,7 +34,6 @@ public class Sensor {
    }
    public void deactivateAction() {
        active = false;
-       controlUnit.deactivateSensorAction(storyNum);
    }
    public boolean isActivated(){
        return active;

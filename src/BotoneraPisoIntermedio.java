@@ -1,6 +1,7 @@
 public class BotoneraPisoIntermedio extends Botonera implements DownRequest, UpRequest {
    private Boton up, down;
-   public BotoneraPisoIntermedio () {
+   public BotoneraPisoIntermedio (ControlUnit cu, int floor) {
+	  super(cu,floor);
       up = new Boton();
       down = new Boton();
    }
@@ -12,6 +13,7 @@ public class BotoneraPisoIntermedio extends Botonera implements DownRequest, UpR
          down.turnON();
       else
          return false;
+      super.elevatorRequested();
       return true;
    }
    // UpRequest interface implementation
