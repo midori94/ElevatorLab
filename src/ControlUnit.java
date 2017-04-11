@@ -92,40 +92,22 @@ public class ControlUnit {
       System.out.print("Sensor activated  ");
       printElevatorState();
       
-      //if(mState == Motor.UP){
-      if(botoneras[currentFloor] instanceof UpRequest){
-         UpRequest boton = (UpRequest) botoneras[currentFloor];
-         if(boton.isUpRequested()){
-    	    checkAndAttendUpRequest(currentFloor);
-            if(areThereHigherRequests(currentFloor)){
-        	    motor.lift();
-            }
-            else if (areThereLowerRequests(currentFloor)){
-        	    checkAndAttendDownRequest(currentFloor);
-        	    motor.lower();
-        	    //checkAndAttendDownRequest(currentFloor);
-            }
-            else{
-        	    motor.stop();
-            }
-         }
+      if (mState == motor.UP){
+	 checkAndAttendUpRequest(currentFloor);
+	 if (!areThereHigherRequests(currentFloor)){
+            checkAndAttendDownRequest(currentFloor);
+            if (areThereLowerRequests(currentFloor))
+               motor.lower();
+            else motor.stop();
+	 }
       }
-      //else if(mState == Motor.DOWN){
-      if(botoneras[currentFloor] instanceof DownRequest){
-    	 DownRequest boton = (DownRequest) botoneras[currentFloor];
-         if(boton.isDownRequested()){
-    	    checkAndAttendDownRequest(currentFloor);
-            if(areThereLowerRequests(currentFloor)){
-        	    motor.lower();
-            }
-            else if (areThereHigherRequests(currentFloor)){
-        	    checkAndAttendUpRequest(currentFloor);
-         	    motor.lift();
-        	    //checkAndAttendUpRequest(currentFloor);
-            }
-            else {
-        	    motor.stop();
-            }
+      else if (mState == motor.DOWN){
+         checkAndAttendDownRequest(currentFloor);
+         if (!areThereLowerRequests(currentFloor)){
+            checkAndAttendUpRequest(currentFloor);
+            if (areThereLowerRequests(currentFloor))
+               motor.lift();
+            else motor.stop();
          }
       }
       // to be completed     
