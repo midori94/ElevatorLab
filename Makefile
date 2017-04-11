@@ -6,7 +6,7 @@ JVM= java -cp bin/
 #.java.class:
 #	$(JC) $(JFLAGS) $*.java
 
-MAIN = stage3Test
+MAIN = stage4Test
 all: 
 	mkdir -p bin/
 	$(JC) $(JFLAGS)$(SRC)

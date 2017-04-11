@@ -19,12 +19,13 @@ public class ControlUnit {
    private Cabina cabina;
    private Sensor[] sensores;
    private Botonera[] botoneras;
-      
+
    public ControlUnit(Motor m,Cabina ca, Sensor[] s, Botonera[] b){
       motor = m;
       cabina = ca;
       sensores = s;
       botoneras = b;
+      
    }
    public void elevatorRequested(int locationRequest){
 	  System.out.print("Button activated  ");
@@ -48,6 +49,8 @@ public class ControlUnit {
       for (Sensor s: sensores)
          System.out.print(s.isActivated()?"1":"0");
       System.out.print("\t");
+      BotoneraCabina bc = (BotoneraCabina)botoneras[0];
+      System.out.print(bc.toString()+"\t");
       for (int i=1; i < botoneras.length; i++) 
          if (botoneras[i] instanceof UpRequest) {
             UpRequest boton = (UpRequest) botoneras[i];
@@ -63,10 +66,12 @@ public class ControlUnit {
    }
    
    private void checkAndAttendUpRequest(int floor) {
+      BotoneraCabina bc = (BotoneraCabina) botoneras[0];
       if (botoneras[floor] instanceof UpRequest){
          UpRequest boton = (UpRequest) botoneras[floor];
-         if (boton.isUpRequested()) {
+         if (boton.isUpRequested()||bc.isRequested(floor)) {
             boton.resetUpRequest();
+            bc.resetFloorRequest(floor);
             System.out.print("Light Deactivated ");
             printElevatorState();
             motor.pause();
@@ -75,10 +80,12 @@ public class ControlUnit {
    }
    
    private void checkAndAttendDownRequest(int floor) {
+      BotoneraCabina bc = (BotoneraCabina)botoneras[0];
       if (botoneras[floor] instanceof DownRequest){
          DownRequest boton = (DownRequest) botoneras[floor];
-         if (boton.isDownRequested()) {
+         if (boton.isDownRequested()||bc.isRequested(floor)) {
 	        boton.resetDownRequest();
+                bc.resetFloorRequest(floor);
 	        System.out.print("Light Deactivated ");
 	        printElevatorState();
             motor.pause();
@@ -113,6 +120,7 @@ public class ControlUnit {
       // to be completed     
    }
    private boolean areThereHigherRequests(int currentFloor) {
+      BotoneraCabina bc = (BotoneraCabina)botoneras[0];
       for (int i=currentFloor+1; i < botoneras.length; i++) {
          if(botoneras[i] instanceof UpRequest){
             UpRequest boton = (UpRequest) botoneras[i];
@@ -124,11 +132,13 @@ public class ControlUnit {
             if (boton.isDownRequested()) 
                return true;
          }
+         if(bc.isRequested(i)) return true;
       }
       return false;
    }
    
    private boolean areThereLowerRequests(int currentFloor) {
+      BotoneraCabina bc = (BotoneraCabina)botoneras[0];
       for (int i=1; i < currentFloor; i++) {
          if(botoneras[i] instanceof UpRequest){
             UpRequest boton = (UpRequest) botoneras[i];
@@ -140,6 +150,7 @@ public class ControlUnit {
 	    if (boton.isDownRequested())
 	       return true;
          }
+         if (bc.isRequested(i)) return true;
       }
       return false;
    }
