@@ -28,8 +28,7 @@ public class ControlUnit {
       
    }
    public void elevatorRequested(int locationRequest){
-	  System.out.print("Button activated  ");
-	  printElevatorState();
+	  //System.out.print("Button activated  ");
       if (motor.getState() == Motor.STOPPED) { // start de motor // SI NO ESTA PARADO QUE PASA?
             // to go to the requested floor
          int cabinaLocation = cabina.readFloorIndicator();
@@ -43,6 +42,8 @@ public class ControlUnit {
          }
          // to be completed
       }
+      printElevatorState();
+
    }
    private void printElevatorState(){
       System.out.print(cabina.readFloorIndicator()+"\t"+motor.getState()+"\t");
@@ -72,7 +73,7 @@ public class ControlUnit {
          if (boton.isUpRequested()||bc.isRequested(floor)) {
             boton.resetUpRequest();
             bc.resetFloorRequest(floor);
-            System.out.print("Light Deactivated ");
+            //System.out.print("Light Deactivated ");
             printElevatorState();
             motor.pause();
          }            
@@ -86,9 +87,9 @@ public class ControlUnit {
          if (boton.isDownRequested()||bc.isRequested(floor)) {
 	        boton.resetDownRequest();
                 bc.resetFloorRequest(floor);
-	        System.out.print("Light Deactivated ");
+	        //System.out.print("Light Deactivated ");
 	        printElevatorState();
-            motor.pause();
+                motor.pause();
          }
       }
    }
@@ -96,7 +97,7 @@ public class ControlUnit {
 	  
       int mState = motor.getState();
       cabina.setFloorIndicator(currentFloor);
-      System.out.print("Sensor activated  ");
+      //System.out.print("Sensor activated  ");
       printElevatorState();
       
       if (mState == motor.UP){

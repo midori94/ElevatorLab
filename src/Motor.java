@@ -58,7 +58,7 @@ public class Motor implements ActionListener {
    public void pause() {
       int oldState =state;
       state = PAUSED;
-      System.out.println("Pausing cabina ..... ");
+      //System.out.println("Pausing cabina ..... ");
       try {
           Thread.currentThread().sleep(2000);  
       } catch (InterruptedException e){}
