@@ -13,18 +13,24 @@ para imprimir el estado de éstos.
 La Unidad de Control tiene una referencia a la cabina para informar 
 a las personas en su interior del número de piso en que van.
 */
+import java.awt.event.*;
+import javax.swing.Timer;
 
-public class ControlUnit {
+public class ControlUnit implements ActionListener {
    private Motor motor;
    private Cabina cabina;
    private Sensor[] sensores;
    private Botonera[] botoneras;
+   private Light luz;
+   private Timer timer;
 
-   public ControlUnit(Motor m,Cabina ca, Sensor[] s, Botonera[] b){
+   public ControlUnit(Motor m,Cabina ca, Sensor[] s, Botonera[] b, Light l){
       motor = m;
       cabina = ca;
       sensores = s;
       botoneras = b;
+      luz = l;
+      timer = new Timer(5000, this);
       
    }
    public void elevatorRequested(int locationRequest){
@@ -40,7 +46,8 @@ public class ControlUnit {
         	 checkAndAttendUpRequest(cabinaLocation);
         	 checkAndAttendDownRequest(cabinaLocation);
          }
-         // to be completed
+         timer.stop();// to be completed
+         luz.turnON();
       }
       printElevatorState();
 
@@ -63,6 +70,7 @@ public class ControlUnit {
             DownRequest boton = (DownRequest) botoneras[i];
             System.out.print(boton.isDownRequested()?"1":"0");
          }   
+      System.out.print("\t"+(luz.getState()? "1":"0"));
       System.out.println();   
    }
    
@@ -106,7 +114,10 @@ public class ControlUnit {
             checkAndAttendDownRequest(currentFloor);
             if (areThereLowerRequests(currentFloor))
                motor.lower();
-            else motor.stop();
+            else { 
+               motor.stop();
+               timer.start();
+            }
 	 }
       }
       else if (mState == motor.DOWN){
@@ -115,7 +126,10 @@ public class ControlUnit {
             checkAndAttendUpRequest(currentFloor);
             if (areThereLowerRequests(currentFloor))
                motor.lift();
-            else motor.stop();
+            else {
+              motor.stop();
+              timer.start();
+            }
          }
       }
       // to be completed     
@@ -155,4 +169,10 @@ public class ControlUnit {
       }
       return false;
    }
+   
+   	public void actionPerformed (ActionEvent event){
+		timer.stop();
+		luz.turnOFF();
+    printElevatorState();
+	 } 
 }

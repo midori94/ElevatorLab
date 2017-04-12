@@ -11,6 +11,7 @@ public class stage4Test {
       float cabinaSpeed = 1f;   // [m/s]
       
         // Creación compoentes del ascensor
+      Light luz = new Light();
       Botonera[] botoneras = new Botonera[numPisos+1]; // index goes from 0 to numPisos.
       
       Sensor[] sensores = new Sensor[numPisos];  // Since the number of sensors does not
@@ -18,7 +19,7 @@ public class stage4Test {
       CajaAscensor shaft = new CajaAscensor(sensores);
       Cabina cabina = new Cabina(shaft);
       Motor motor = new Motor(cabina, cabinaSpeed);
-      ControlUnit controlUnit = new ControlUnit(motor, cabina, sensores, botoneras);      
+      ControlUnit controlUnit = new ControlUnit(motor, cabina, sensores, botoneras,luz);      
       
       botoneras[0] = new BotoneraCabina(numPisos,controlUnit);  // we do not use it in this stage
       botoneras[1] = new BotoneraPrimerPiso(controlUnit,1);
