@@ -22,7 +22,7 @@ classes: $(CLASSES:.java=.class)
 
 # run tarjet added by Agustín González
 run: 
-	$(JVM) $(MAIN)
+	$(JVM) $(MAIN) > Stage2_out.csv
 
 clean:
 	$(RM) src/*.class
