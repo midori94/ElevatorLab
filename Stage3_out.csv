@@ -1,0 +1,14 @@
+Button activated  1	3	000000	00001-	-00000
+Button activated  1	0	000000	00001-	-00010
+Sensor activated  2	0	010000	00001-	-00010
+Sensor activated  3	0	001000	00001-	-00010
+Button activated  3	0	000000	00001-	-00110
+Sensor activated  4	0	000100	00001-	-00110
+Sensor activated  5	0	000010	00001-	-00110
+Light Deactivated 5	0	000010	00000-	-00110
+Pausing cabina ..... 
+Light Deactivated 5	0	000010	00000-	-00100
+Pausing cabina ..... 
+Sensor activated  4	1	000100	00000-	-00100
+Light Deactivated 4	1	000100	00000-	-00000
+Pausing cabina ..... 
