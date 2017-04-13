@@ -1,5 +1,12 @@
 ### Proyecto Ascensor
+Tarea 1 - ELO329
+UTFSM - 2017-1
+Autores:
+* Felipe Arriagada
+* Boris Vidal
+* Guillermo Becerra
 =====
+
 Hola
 ***
 
