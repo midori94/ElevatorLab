@@ -28,9 +28,16 @@ El código presentado, consiste en la completación de un código provisto por e
 
 #### Operación
 
-Para realizar llamados a nuestro asensor virtual, se generó un archivo *.txt que contiene la siguiente información: ``` <tiempo>  <TAB>  <número de botonera>  <TAB>   <U | D | número de piso>  <RET> ```
+Para interactuar con nuestro asensor virtual -requerirlo- se generó un archivo *.txt que contiene la siguiente información: ``` 
+<tiempo>  <TAB>  <número de botonera>  <TAB>   <U | D | número de piso>  <RET> ```
+que indica cuándo, desde dónde y qué se requiere. De este modo se puede probar el desarrollo realizado.
 
 Para información más detallada dirigirse al siguiente link [Tarea 1](http://www.profesores.elo.utfsm.cl/~agv/elo329/1s17/Assignments/T1_1s17.html)
+
+##### Salida del programa:
+```
+<piso de la cabina> <estado sensores de piso> <TAB>  <estado luces de botonera de cabina> <TAB> <estado de luces de botones de subida de piso> <TAB> <estado de luces de botones de bajada de piso>  <RET>
+```
 
 ------
 
@@ -63,3 +70,5 @@ En esta etapa se incluye la Unidad de Control y a ella llegan llegan las señale
 #### Estapa 4 (Stage4)
 
 En esta etapa se conecta la botonera de la cabina a la Unidad de Control. Se modifica la lógica de la unidad de control para que el sistema funcione con todas las prestaciones requeridas.
+
+#### Se abordó el Extra Crédito
