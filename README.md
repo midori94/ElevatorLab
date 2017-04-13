@@ -18,6 +18,7 @@ En cada directorio encontrará además de los archivos *.java, un archivo _Makef
 make
 ```
  y luego ejecutar el programa principal, **make run**
+ 
 ------
 
 #### Estapa 1 (Stage1)
