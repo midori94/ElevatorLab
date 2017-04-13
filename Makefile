@@ -13,7 +13,7 @@ all:
 
 
 run:
-	$(JVM) $(MAIN) "inputEvents.txt"
+	$(JVM) $(MAIN) "inputEvents.txt" > StageE_out.csv
 
 
 clean:
