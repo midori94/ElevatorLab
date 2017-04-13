@@ -1,6 +1,6 @@
 JFLAGS = -g -classpath src/
 JC = javac
-JVM= java -cp src/ # Added by Agustín González
+JVM= java -cp src/ # Added by AgustÃ­n GonzÃ¡lez
 .SUFFIXES: .java .class
 .java.class:
 	$(JC) $(JFLAGS) $*.java
@@ -15,16 +15,16 @@ CLASSES = \
 	src/UpRequest.java \
 	src/ElevatorLab.java
 
-# main variable: Added by Agustín González
+# main variable: Added by AgustÃ­n GonzÃ¡lez
 MAIN = ElevatorLab
 
 default: classes
 
 classes: $(CLASSES:.java=.class)
 
-# run tarjet added by Agustín González
+# run tarjet added by AgustÃ­n GonzÃ¡lez
 run: 
-	$(JVM) $(MAIN) "inputEvents.txt"
+	$(JVM) $(MAIN) "inputEvents.txt" > Stage1_out.csv
 
 clean:
 	$(RM) src/*.class
