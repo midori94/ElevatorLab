@@ -14,12 +14,7 @@ En los directorios se encuentran los archivos fuentes en lenguaja JAVA que permi
 
 El problema fue resuelto usando el método *iterativo* e *incremental*. Por esto se entregan directorios con el código utilizado para dar solución al problema en __cuatro etapas__. 
 
-En cada directorio encontrará además de los archivos *.java, un archivo _Makefile_ que permitirá compilar los anteriores escribiendo 
-```
-make
-```
-y luego ejecutar el programa principal, ``` make run ```
-
+En cada directorio encontrará además de los archivos *.java, un archivo _Makefile_ que permitirá compilar los anteriores escribiendo ``` make ``` desde línea de comandos, y luego ejecutar el programa principal, ``` make run ``` . Para eliminar los archivos *.class, ejecutar ``` make clean ```.
 
 ------
 
