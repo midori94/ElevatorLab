@@ -77,4 +77,6 @@ En esta etapa se incluye la Unidad de Control y a ella llegan llegan las señale
 
 En esta etapa se conecta la botonera de la cabina a la Unidad de Control. Se modifica la lógica de la unidad de control para que el sistema funcione con todas las prestaciones requeridas.
 
+![Image](https://github.com/radagast94/ElevatorLab/blob/master/graph.jpg)
+
 #### Se abordó el Extra Crédito
