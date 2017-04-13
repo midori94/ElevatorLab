@@ -2,7 +2,7 @@ import java.util.Scanner;
 import java.io.File;
 import java.io.FileNotFoundException;
 
-public class stage4Test {
+public class elevator {
    public static int currentTime=0;
    public static void main(String[] args) {
         // Elevator's parameters

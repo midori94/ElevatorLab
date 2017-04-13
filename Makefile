@@ -6,7 +6,7 @@ JVM= java -cp bin/
 #.java.class:
 #	$(JC) $(JFLAGS) $*.java
 
-MAIN = stage4Test
+MAIN = elevator
 all: 
 	mkdir -p bin/
 	$(JC) $(JFLAGS)$(SRC)
