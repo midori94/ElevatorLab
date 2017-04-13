@@ -13,7 +13,7 @@ all:
 
 
 run:
-	$(JVM) $(MAIN) "inputEvents.txt"
+	$(JVM) $(MAIN) "inputEvents.txt" MasterMerge_out.csv
 
 
 clean:
