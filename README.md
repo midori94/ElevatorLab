@@ -18,6 +18,22 @@ En cada directorio encontrará además de los archivos *.java, un archivo _Makef
 
 ------
 
+#### Descripción General del Problema
+
+Se desea controlar el comportamiento de un asensor, atendiendo los llamados desde los distintos pisos, con intención de subir o bajar, y llevándo a los pasajeros al piso que éstos indiquen en la botonera interna. Para esto se cuenta con un sensores de piso que permiten el correcto desplazamiento y detección entre pisos, una unidad de contro, un motor e indicadores de pisos, como se muestra en la imagen a continuación. 
+
+![Image](http://www.profesores.elo.utfsm.cl/~agv/elo329/1s17/Assignments/T1/Fig1.png)
+
+El código presentado, consiste en la completación de un código provisto por el profesor, que fue intencionalmente reducido.
+
+#### Operación
+
+Para realizar llamados a nuestro asensor virtual, se generó un archivo *.txt que contiene la siguiente información: ``` <tiempo>  <TAB>  <número de botonera>  <TAB>   <U | D | número de piso>  <RET> ```
+
+Para información más detallada dirigirse al siguiente link [Tarea 1](http://www.profesores.elo.utfsm.cl/~agv/elo329/1s17/Assignments/T1_1s17.html)
+
+------
+
 #### Etapa 1 (Stage1)
 
 
