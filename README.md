@@ -8,7 +8,7 @@ Autores:
 * Boris Vidal
 * Guillermo Becerra
 
-======
+------
 
 En los directorios se encuentran los archivos fuentes en lenguaja JAVA que permiten resolver el problema de control de un asensor, modelanto objetos del mundo real, como objetos de software (e.g. ascensor, bontoneras, sensores de piso, unidad de control y motor).
 
@@ -18,13 +18,26 @@ En cada directorio encontrará además de los archivos *.java, un archivo _Makef
 
 ------
 
-#### Estapa 1 (Stage1)
+#### Etapa 1 (Stage1)
 
 
 
 ![Image](http://profesores.elo.utfsm.cl/~agv/elo329/1s17/Assignments/T1/source/stage1/ClassDiagram.png)
+
+------
+
+#### Etapa 2 (Stage2)
+
 ![Image](http://profesores.elo.utfsm.cl/~agv/elo329/1s17/Assignments/T1/source/stage2/classDiagram.png)
+
+------
+
+#### Etapa 3 (Stage3)
+
 ![Image](http://profesores.elo.utfsm.cl/~agv/elo329/1s17/Assignments/T1/source/stage3/Stage3ClassDiagram.png)
 
 
+------
+
+#### Estapa 4 (Stage4)
 
