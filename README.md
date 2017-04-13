@@ -12,10 +12,6 @@ Autores:
 
 En los directorios se encuentran los archivos fuentes en lenguaja JAVA que permiten resolver el problema de control de un asensor, modelanto objetos del mundo real, como objetos de software (e.g. ascensor, bontoneras, sensores de piso, unidad de control y motor).
 
-El problema fue resuelto usando el método *iterativo* e *incremental*. Por esto se entregan directorios con el código utilizado para dar solución al problema en __cuatro etapas__. 
-
-En cada directorio encontrará además de los archivos *.java, un archivo _Makefile_ que permitirá compilar los anteriores escribiendo ``` make ``` desde línea de comandos, y luego ejecutar el programa principal, ``` make run ``` . Para eliminar los archivos *.class, ejecutar ``` make clean ```.
-
 ------
 
 #### Descripción General del Problema
@@ -24,20 +20,30 @@ Se desea controlar el comportamiento de un asensor, atendiendo los llamados desd
 
 ![Image](http://www.profesores.elo.utfsm.cl/~agv/elo329/1s17/Assignments/T1/Fig1.png)
 
+#### Entrega
+
 El código presentado, consiste en la completación de un código provisto por el profesor, que fue intencionalmente reducido.
 
-#### Operación
+El problema fue resuelto usando el método *iterativo* e *incremental*. Por esto se entregan directorios con el código utilizado para dar solución al problema en __cuatro etapas__. 
 
-Para interactuar con nuestro asensor virtual -requerirlo- se generó un archivo *.txt que contiene la siguiente información: ``` 
+##### Ejecución
+
+Para interactuar con el asensor virtual -requerirlo- se generó un archivo _inputEvents.txt_ en cada estapa, que contiene la siguiente información: ``` 
 <tiempo>  <TAB>  <número de botonera>  <TAB>   <U | D | número de piso>  <RET> ```
 que indica cuándo, desde dónde y qué se requiere. De este modo se puede probar el desarrollo realizado.
 
-Para información más detallada dirigirse al siguiente link [Tarea 1](http://www.profesores.elo.utfsm.cl/~agv/elo329/1s17/Assignments/T1_1s17.html)
+En cada directorio encontrará además de los archivos *.java, un archivo _Makefile_ que permitirá compilar los anteriores escribiendo ``` make ``` desde línea de comandos desde la carpeta contenedora, y luego ejecutar el programa principal, ``` make run ``` . Para eliminar los archivos *.class, ejecutar ``` make clean ```.  No cambiar el nombre del archivo de entrada (*.txt), ya que ``` make run ``` considera ejecutar el programa principal, pasando dicho archivo como parámetro. Además, java permite redigir la salida por pantalla a ficheros de salida. En este caso se usó:
+```Javascript
+java main_code > output_file.csv
+```
+De este modo a posteriori se puede usar los datos de salida organizados en formato CSV (*comma separated values*).
 
 ##### Salida del programa:
 ```
 <piso de la cabina> <estado sensores de piso> <TAB>  <estado luces de botonera de cabina> <TAB> <estado de luces de botones de subida de piso> <TAB> <estado de luces de botones de bajada de piso>  <RET>
 ```
+
+Para información más detallada dirigirse al siguiente link [Tarea 1](http://www.profesores.elo.utfsm.cl/~agv/elo329/1s17/Assignments/T1_1s17.html)
 
 ------
 
