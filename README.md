@@ -32,9 +32,9 @@ Para interactuar con el asensor virtual -requerirlo- se generó un archivo _inpu
 <tiempo>  <TAB>  <número de botonera>  <TAB>   <U | D | número de piso>  <RET> ```
 que indica cuándo, desde dónde y qué se requiere. De este modo se puede probar el desarrollo realizado.
 
-En cada directorio encontrará además de los archivos *.java, un archivo _Makefile_ que permitirá compilar los anteriores escribiendo ``` make ``` desde línea de comandos desde la carpeta contenedora, y luego ejecutar el programa principal, ``` make run ``` . Para eliminar los archivos *.class, ejecutar ``` make clean ```.  No cambiar el nombre del archivo de entrada (*.txt), ya que ``` make run ``` considera ejecutar el programa principal, pasando dicho archivo como parámetro. Además, java permite redigir la salida por pantalla a ficheros de salida. En este caso se usó:
+En cada directorio encontrará además de los archivos *.java, un archivo _Makefile_ que permitirá compilar los anteriores escribiendo ``` make ``` desde línea de comandos desde la carpeta contenedora, y luego ejecutar el programa principal, ``` make run ``` . Para eliminar los archivos *.class, ejecutar ``` make clean ```.  No cambiar el nombre del archivo de entrada (*.txt), ya que ``` make run ``` considera ejecutar el programa principal, pasando dicho archivo como parámetro. Además, java permite redigir la salida por pantalla a ficheros de salida.  __Los archivos resultantes de la compilación quedan automáticamente en la carpeta bin/__. En este caso, desde el directorio raíz, se debe usar:
 ```Javascript
-java main_code > output_file.csv
+java -cp bin/ stage4Test "inputEvents.txt" > out.csv
 ```
 De este modo a posteriori se puede usar los datos de salida organizados en formato CSV (*comma separated values*).
 
