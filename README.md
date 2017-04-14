@@ -40,7 +40,7 @@ De este modo a posteriori se puede usar los datos de salida organizados en forma
 
 ##### Salida del programa:
 ```
-<piso de la cabina> <estado sensores de piso> <TAB>  <estado luces de botonera de cabina> <TAB> <estado de luces de botones de subida de piso> <TAB> <estado de luces de botones de bajada de piso>  <RET>
+<piso de la cabina> <estado sensores de piso> <TAB>  <estado luces de botonera de cabina> <TAB> <estado de luces de botones de subida de piso> <TAB> <estado de luces de botones de bajada de piso> <TAB> <estado de luz de la cabina> <RET>
 ```
 
 Para información más detallada dirigirse al siguiente link [Tarea 1](http://www.profesores.elo.utfsm.cl/~agv/elo329/1s17/Assignments/T1_1s17.html)
@@ -77,4 +77,8 @@ En esta etapa se incluye la Unidad de Control y a ella llegan llegan las señale
 
 En esta etapa se conecta la botonera de la cabina a la Unidad de Control. Se modifica la lógica de la unidad de control para que el sistema funcione con todas las prestaciones requeridas.
 
+![Image](https://github.com/radagast94/ElevatorLab/blob/master/graph.jpg)
+
 #### Se abordó el Extra Crédito
+
+Se implementó la luz de la cabina al llegar a un piso se enciende y se apaga luego de 5 segundos sin recibir solicitudes.
