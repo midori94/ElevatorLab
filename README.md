@@ -51,6 +51,8 @@ Para información más detallada dirigirse al siguiente link [Tarea 1](http://ww
 
 Esta etapa sólo se implementa clases para representar la botonera de cada piso y la de cabina. El programa leerá los eventos del archivo de entrada y apagará el botón previamente encendido cuando uno nuevo sea presionado. 
 
+EL principal inconveniente al programar la presente etapa, no pasó de ser el entender el programa de ayuda recibido. Una vez que la intención de los métodos incluidos en el programa de ayuda fue comprendida, fue posible terminar con un programa coherente y funcional. 
+
 
 ![Image](http://profesores.elo.utfsm.cl/~agv/elo329/1s17/Assignments/T1/source/stage1/ClassDiagram.png)
 
@@ -59,6 +61,8 @@ Esta etapa sólo se implementa clases para representar la botonera de cada piso 
 #### Etapa 2 (Stage2)
 
 En esta segunda etapa se implementará la cabina (que incluye su motor) y los sensores de piso. Cada sensor se ubica en una posición específica de la caja del ascensor y la cabina circula por su interior. Por esta razón los sensores de piso y la cabina están en la caja del ascensor. 
+
+Al igual que en la primera etapa, la dificultad no pasó de ser el comprender la finalidad o intención del programador en los métodos inlcuidos en el programa de ayuda.
 
 ![Image](http://profesores.elo.utfsm.cl/~agv/elo329/1s17/Assignments/T1/source/stage2/classDiagram.png)
 
@@ -71,6 +75,8 @@ En esta segunda etapa se implementará la cabina (que incluye su motor) y los se
 
 En esta etapa se incluye la Unidad de Control y a ella llegan llegan las señales de la botonera de cada piso. Aquellas de la botonera de la cabina no son consideradas en esta etapa. En esta etapa la Unidad de Control recibe llamados desde cada piso y mueve la cabina a los pisos que corresponda. Una vez que llega al piso, apaga la luz del llamado y se detiene por 2 segundos.
 
+La presente etapa fue la más problemática, ya que aparte de comprender el programa, fue necesario dejar funcionando la máquina de estados de control. Fue necesario la implementación de tres máquians distintas, entre encontrar errores y implementar correcciones, para lograr el funcionamiento esperado.
+
 ![Image](http://profesores.elo.utfsm.cl/~agv/elo329/1s17/Assignments/T1/source/stage3/Stage3ClassDiagram.png)
 
 **Resultado de la etapa - Gráfico Nivel vs Evento **
@@ -80,6 +86,8 @@ En esta etapa se incluye la Unidad de Control y a ella llegan llegan las señale
 #### Estapa 4 (Stage4)
 
 En esta etapa se conecta la botonera de la cabina a la Unidad de Control. Se modifica la lógica de la unidad de control para que el sistema funcione con todas las prestaciones requeridas.
+
+La dificultad solo fue de inteegrar la botonera de la cabina con el programa de la etapa 3.
 
 **Resultado de la etapa - Gráfico Nivel vs Evento **
 ![Image](https://github.com/radagast94/ElevatorLab/blob/master/graph.jpg)
