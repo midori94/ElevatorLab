@@ -89,7 +89,7 @@ En esta etapa se conecta la botonera de la cabina a la Unidad de Control. Se mod
 
 La dificultad solo fue de inteegrar la botonera de la cabina con el programa de la etapa 3.
 
-**Resultado de la etapa - Gráfico Nivel vs Evento **
+##### Resultado de la etapa - Gráfico Nivel vs Evento
 ![Image](https://github.com/radagast94/ElevatorLab/blob/master/graph.jpg)
 
 #### Se abordó el Extra Crédito
