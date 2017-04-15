@@ -62,6 +62,9 @@ En esta segunda etapa se implementará la cabina (que incluye su motor) y los se
 
 ![Image](http://profesores.elo.utfsm.cl/~agv/elo329/1s17/Assignments/T1/source/stage2/classDiagram.png)
 
+**Resultado de la etapa - Gráfico Nivel vs Evento **
+![Image](https://github.com/radagast94/ElevatorLab/blob/Stage2/Stage2.jpg)
+
 ------
 
 #### Etapa 3 (Stage3)
@@ -70,13 +73,15 @@ En esta etapa se incluye la Unidad de Control y a ella llegan llegan las señale
 
 ![Image](http://profesores.elo.utfsm.cl/~agv/elo329/1s17/Assignments/T1/source/stage3/Stage3ClassDiagram.png)
 
-
+**Resultado de la etapa - Gráfico Nivel vs Evento **
+![Image](https://github.com/radagast94/ElevatorLab/blob/Stage3/Stage3.jpg)
 ------
 
 #### Estapa 4 (Stage4)
 
 En esta etapa se conecta la botonera de la cabina a la Unidad de Control. Se modifica la lógica de la unidad de control para que el sistema funcione con todas las prestaciones requeridas.
 
+**Resultado de la etapa - Gráfico Nivel vs Evento **
 ![Image](https://github.com/radagast94/ElevatorLab/blob/master/graph.jpg)
 
 #### Se abordó el Extra Crédito
